@@ -4,10 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 [[bench]]
-name = "benchmark"
+name = "sort"
 harness = false
 
 [dependencies]
+counting_sort = "1.0.10"
 criterion = { version = "0.5.1", features = ["html_reports"] }
 glidesort = { version = "0.1.2", features = ["unstable"] }
 itertools = "0.11.0"
@@ -15,6 +16,7 @@ ndarray = "0.15.6"
 pprof = { version = "0.13.0", features = ["criterion", "flamegraph"] }
 rand = "0.8.5"
 sort = "0.8.5"
+voracious_radix_sort = { version = "1.2.0", features = ["rayon", "voracious_multithread"] }
 
 [profile.bench]
 lto = true

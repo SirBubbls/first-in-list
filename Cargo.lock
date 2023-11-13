@@ -176,6 +176,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "702fc72eb24e5a1e48ce58027a675bc24edd52096d5397d4aea7c6dd9eca0bd1"
 
 [[package]]
+name = "counting_sort"
+version = "1.0.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2dea0d5f4c8656265a6da0f8dd18d8f9515fd994262bea1eceb582b6fab142af"
+
+[[package]]
 name = "cpp_demangle"
 version = "0.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -487,6 +493,7 @@ dependencies = [
 name = "min"
 version = "0.1.0"
 dependencies = [
+ "counting_sort",
  "criterion",
  "glidesort",
  "itertools 0.11.0",
@@ -494,6 +501,7 @@ dependencies = [
  "pprof",
  "rand",
  "sort",
+ "voracious_radix_sort",
 ]
 
 [[package]]
@@ -986,6 +994,15 @@ name = "version_check"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+[[package]]
+name = "voracious_radix_sort"
+version = "1.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "446e7ffcb6c27a71d05af7e51ef2ee5b71c48424b122a832f2439651e1914899"
+dependencies = [
+ "rayon",
+]
 
 [[package]]
 name = "walkdir"
