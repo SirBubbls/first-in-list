@@ -1,0 +1,23 @@
+[package]
+name = "min"
+version = "0.1.0"
+edition = "2021"
+
+[[bench]]
+name = "benchmark"
+harness = false
+
+[dependencies]
+criterion = { version = "0.5.1", features = ["html_reports"] }
+glidesort = { version = "0.1.2", features = ["unstable"] }
+itertools = "0.11.0"
+ndarray = "0.15.6"
+pprof = { version = "0.13.0", features = ["criterion", "flamegraph"] }
+rand = "0.8.5"
+sort = "0.8.5"
+
+[profile.bench]
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
