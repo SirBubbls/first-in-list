@@ -1,4 +1,5 @@
 #![feature(portable_simd)]
+use chrono::{NaiveTime, Utc};
 use itertools::Itertools;
 use rand::seq::SliceRandom;
 use rand::Rng;
@@ -36,9 +37,22 @@ pub fn findme(vec1: Vec<i32>, vec2: Vec<i32>) -> Vec<i32> {
 }
 
 fn main() {
+    for _ in 0..50 {
+        let mut list = generate_list(5_000_000);
+        list.sort_unstable();
+        print!("{}", list[0]);
+    }
+
+    let lists: Vec<Vec<i32>> = (0..30).map(|_| generate_list(1_000_000)).collect_vec();
+    let start_time: NaiveTime = Utc::now().time();
+    for mut x in lists {
+        x.sort_unstable();
+    }
+    let end_time: NaiveTime = Utc::now().time();
+    println!("\n{:?}", (end_time - start_time).num_milliseconds() / 30);
+
     //let mut x = [0; 270_000];
     //let x = simd(&generate_list(1000), &generate_list(1000), &mut x);
-    let x = findme(generate_list(1000), generate_list(1000));
-    println!("{:?}", x);
-
+    //let x = findme(generate_list(1000), generate_list(1000));
+    //println!("{:?}", x);
 }

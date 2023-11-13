@@ -5,12 +5,13 @@ from main import just_np_sort
 setup = """
 from test_main import get_list
 from main import just_np_sort
-l = get_list(5_000_000)
+l = get_list(1_000_000)
 """
 
 run = """
 just_np_sort(l)
 """
+
 print(get_list(10))
 print(just_np_sort(get_list(10)))
 

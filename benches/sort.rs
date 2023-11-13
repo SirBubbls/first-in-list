@@ -1,8 +1,7 @@
 #![feature(portable_simd)]
-use voracious_radix_sort::{RadixSort};
 use counting_sort::CountingSort;
+use voracious_radix_sort::RadixSort;
 
-use pprof::criterion::{Output, PProfProfiler};
 use rand::seq::SliceRandom;
 use std::collections::HashSet;
 
@@ -46,26 +45,50 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         let mut group = c.benchmark_group(format!("sort unstable {}", &array_size));
 
         group.bench_function("unstable", move |b| {
-            b.iter_batched(|| generate_list(*array_size), |mut x| x.sort_unstable(), BatchSize::LargeInput);
+            b.iter_batched(
+                || generate_list(*array_size),
+                |mut x| x.sort_unstable(),
+                BatchSize::LargeInput,
+            );
         });
         group.bench_function("stable", move |b| {
-            b.iter_batched(|| generate_list(*array_size), |mut x| x.sort(), BatchSize::LargeInput);
+            b.iter_batched(
+                || generate_list(*array_size),
+                |mut x| x.sort(),
+                BatchSize::LargeInput,
+            );
         });
 
         group.bench_function("counting", move |b| {
-            b.iter_batched(|| generate_list(*array_size), |x| x.iter().cnt_sort_min_max(&0, &5_000_000), BatchSize::LargeInput);
+            b.iter_batched(
+                || generate_list(*array_size),
+                |x| x.iter().cnt_sort_min_max(&0, &5_000_000),
+                BatchSize::LargeInput,
+            );
         });
 
         group.bench_function("radix", move |b| {
-            b.iter_batched(|| generate_list(*array_size), |mut x| x.voracious_sort(), BatchSize::LargeInput);
+            b.iter_batched(
+                || generate_list(*array_size),
+                |mut x| x.voracious_sort(),
+                BatchSize::LargeInput,
+            );
         });
 
         group.bench_function("radix mt", move |b| {
-            b.iter_batched(|| generate_list(*array_size), |mut x| x.voracious_mt_sort(8), BatchSize::LargeInput);
+            b.iter_batched(
+                || generate_list(*array_size),
+                |mut x| x.voracious_mt_sort(16),
+                BatchSize::LargeInput,
+            );
         });
 
         group.bench_function("glidesort", move |b| {
-            b.iter_batched(|| generate_list(*array_size), |mut x| glidesort::sort(&mut x), BatchSize::LargeInput);
+            b.iter_batched(
+                || generate_list(*array_size),
+                |mut x| glidesort::sort(&mut x),
+                BatchSize::LargeInput,
+            );
         });
         group.finish();
     }

@@ -8,6 +8,7 @@ name = "sort"
 harness = false
 
 [dependencies]
+chrono = "0.4.31"
 counting_sort = "1.0.10"
 criterion = { version = "0.5.1", features = ["html_reports"] }
 glidesort = { version = "0.1.2", features = ["unstable"] }

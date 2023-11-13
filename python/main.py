@@ -16,7 +16,7 @@ def just_sort(arr):
     return sorted(arr)
 
 def just_np_sort(arr):
-    return np.sort(arr, kind="quicksort")
+    return np.sort(arr)
 
 if __name__ == '__main__':
     print(find_smallet_int([1,2,3,4,6]))
