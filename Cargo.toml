@@ -11,7 +11,7 @@ harness = false
 chrono = "0.4.31"
 counting_sort = "1.0.10"
 criterion = { version = "0.5.1", features = ["html_reports"] }
-glidesort = { version = "0.1.2", features = ["unstable"] }
+#glidesort = { version = "0.1.2", features = ["unstable"] }
 itertools = "0.11.0"
 ndarray = "0.15.6"
 pprof = { version = "0.13.0", features = ["criterion", "flamegraph"] }
